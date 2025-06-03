@@ -3,14 +3,21 @@ import HowItWorks from './HowItWorks';
 import WhereWeAre from './WhereWeAre';
 import Benefits from './Benefits';
 import StreamlineHiring from './StreamlineHiring';
-import GuardTypes from './GuardTypes';
+import GuardTypes from './WorkerTypes';
 import Pricing from './Pricing';
 import About from './About';
 import ThreeImages from './ThreeImages';
 import LogoGrid from './LogoGrid';
-import image1 from '@/assets/car-guard.jpg';
-import image2 from '@/assets/two-guards.jpg';
-import image3 from '@/assets/guardback.jpg';
+
+import image1 from '@/assets/img1.jpg';
+import image2 from '@/assets/img2.webp';
+import image3 from '@/assets/img3.jpg';
+import image4 from '@/assets/img4.jpg';
+import image5 from '@/assets/img5.jpg';
+import image6 from '@/assets/img6.jpeg';
+import image7 from '@/assets/img7.jpg';
+import image8 from '@/assets/img8.jpg';
+
 import rafih from '@/assets/rafih-logo-hd.jpg';
 import remax from '@/assets/remax.png';
 import scotlynn from '@/assets/scotlynn.png';
@@ -18,7 +25,9 @@ import metroscg from '@/assets/metroscg.jpg';
 import mikhaiellogistics from '@/assets/mikhaiellogistics.jpeg';
 import myyellow from '@/assets/myyellow.jpg';
 import suretrack from '@/assets/suretrack.jpg';
-import BannerBackground from "@/assets/securityguard.png";
+import rafat from '@/assets/Rafat.jpg';
+
+import BannerBackground from "@/assets/img1.jpg";
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 
@@ -42,18 +51,19 @@ const Home = () => {
             <Link
               to="/companies-for-hire"
               target="_blank"
-              className="inline-block px-8 py-4 text-xl font-bold text-white bg-[#2A69EF] rounded-lg text-center  hover:bg-gray-900 transition-colors duration-300 w-full sm:w-80 sm:mx-2"
+              className="inline-block px-8 py-4 text-xl font-bold text-white bg-[#b35c0d] rounded-lg text-center hover:text-white hover:bg-[#8f4c0d] transition-colors duration-300 w-full sm:w-80 sm:mx-2"
               >
-              Companies Start Here
+              Employers Start Here
             </Link>
             {/* Security Guards Start Here Button */}
             <Link
-              to="/security-guard-register"
+              to="/fleet-worker-register"
               target="_blank"
-              className="inline-block px-8 py-4 text-xl font-bold text-white bg-[#2A69EF] rounded-lg text-center  hover:bg-gray-900 transition-colors duration-300 w-full sm:w-80 sm:mx-2"
+              className="inline-block px-8 py-4 text-xl font-bold text-white bg-[#b35c0d] rounded-lg text-center hover:text-white hover:bg-[#8f4c0d] transition-colors duration-300 w-full sm:w-80 sm:mx-2"
               >
-              Security Guards Start Here
+              Job Seekers Start Here
             </Link>
+
           </div>
         </div>
       </div>
@@ -62,12 +72,15 @@ const Home = () => {
       <div id="how-it-works">
         <HowItWorks />
       </div>
-      <div id="where-we-are">
-        <WhereWeAre />
-      </div>
+
       <div id="benefits">
         <Benefits />
       </div>
+
+      {/* Three Images Component */}
+      <ThreeImages image1={image5} image2={image6} />
+
+
       <div id="streamline-hiring">
         <StreamlineHiring />
       </div>
@@ -75,7 +88,7 @@ const Home = () => {
         <GuardTypes />
       </div>
       {/* Three Images Component */}
-      <ThreeImages image1={image3} image2={image2} image3={image1} />
+      <ThreeImages image1={image3} image2={image2} image3={image4} />
      
       <div id="pricing">
         <Pricing />
@@ -85,13 +98,14 @@ const Home = () => {
         <LogoGrid
           title="Our Trusted Partners"
           logos={[
-            { src: rafih, alt: "Rafih" },
-            { src: remax, alt: "Remax" },
-            { src: metroscg, alt: "Metro SCG" },
-            { src: scotlynn, alt: "Scotlynn" },
-            { src: mikhaiellogistics, alt: "Mikhaiel Logistics" },
-            { src: myyellow, alt: "My Yellow" },
-            { src: suretrack, alt: "Suretrack" },
+            // { src: rafih, alt: "Rafih" },
+            // { src: remax, alt: "Remax" },
+            // { src: metroscg, alt: "Metro SCG" },
+            // { src: scotlynn, alt: "Scotlynn" },
+            // { src: mikhaiellogistics, alt: "Mikhaiel Logistics" },
+            // { src: myyellow, alt: "My Yellow" },
+            // { src: suretrack, alt: "Suretrack" },
+            { src: rafat, alt: "Rafat" },
           ]}
         />
       </div>

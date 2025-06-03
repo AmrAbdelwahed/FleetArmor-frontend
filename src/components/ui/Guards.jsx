@@ -1,24 +1,81 @@
 import React, { useState } from 'react';
 import '@/assets/LoginSignup.css';
 import '@/assets/navbar.css';
-import { TextField, Snackbar, Alert, CircularProgress } from '@mui/material';
+import { TextField, Snackbar, Alert, CircularProgress, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import DialpadTwoToneIcon from '@mui/icons-material/DialpadTwoTone';
-import LocationCityIcon from '@mui/icons-material/LocationCity';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InfoIcon from '@mui/icons-material/Info';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
 import Navbar from './Navbar';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';  // Changed from 5173 to 3001
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
-const Guards = () => {
+const specialtyOptions = {
+  'A': {
+    label: 'Management & Operations',
+    subcategories: [
+      'Fleet Manager',
+      'Fleet Supervisor',
+      'Fleet Operations Manager',
+      'Fleet Maintenance Manager',
+      'Fleet Safety and Training Manager',
+      'Logistics Coordinator',
+      'Project Manager'
+    ]
+  },
+  'B': {
+    label: 'Technical & Maintenance Jobs',
+    subcategories: [
+      'Fleet Technician',
+      'Heavy Duty Mechanic',
+      'Apprentice Mechanic',
+      'Fleet Administrator',
+      'Purchasing Agent/Supplier Manager',
+      'Fleet Mechanic / Diesel Technician',
+      'Fleet Supervisor/Dispatcher',
+      'Fleet Washer/Yard Helper'
+    ]
+  },
+  'C': {
+    label: 'Snow & Wind Services',
+    subcategories: [
+      'Snow Plow Operator',
+      'Wind/Storm Response Crew'
+    ]
+  },
+  'D': {
+    label: 'Fleet Vehicle Operator Roles',
+    subcategories: [
+      'DT (Dump Truck Operator)',
+      'SW (Sweeper Truck Operator)',
+      'RO (Roll-Off Truck Operator)',
+      'WT (Water Truck Operator)',
+      'FT (Fuel Truck Operator)'
+    ]
+  },
+  'E': {
+    label: 'Fleet Drivers & Other Support Jobs',
+    subcategories: [
+      'Lowboy Truck Driver',
+      'Loader Operator (Fleet Yard)',
+      'GPS/Telematics Technician'
+    ]
+  }
+};
+
+const FleetWorkersForm = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    phone: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    phone: '',
     city: '',
-    license: '',
+    specialtyCategory: '',
+    specialtySubcategory: '',
     yearsOfExperience: '',
+    cdlLicense: '',
     details: '',
   });
 
@@ -35,12 +92,14 @@ const Guards = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\+?[\d\s-]{10,}$/;
 
-    if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
     if (!emailRegex.test(formData.email)) newErrors.email = 'Invalid email format';
     if (!phoneRegex.test(formData.phone)) newErrors.phone = 'Invalid phone format';
-    if (!formData.license.trim()) newErrors.license = 'Security guard license is required';
-    if (!formData.yearsOfExperience.trim()) newErrors.yearsOfExperience = 'Years of experience is required';
     if (!formData.city.trim()) newErrors.city = 'City is required';
+    if (!formData.specialtyCategory) newErrors.specialtyCategory = 'Specialty category is required';
+    if (!formData.specialtySubcategory) newErrors.specialtySubcategory = 'Specialty subcategory is required';
+    if (!formData.yearsOfExperience.trim()) newErrors.yearsOfExperience = 'Years of experience is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -48,10 +107,21 @@ const Guards = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    
+    // Reset subcategory when category changes
+    if (name === 'specialtyCategory') {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+        specialtySubcategory: '',
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+    
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -66,7 +136,7 @@ const Guards = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/submit-guard`, {
+      const response = await fetch(`${API_URL}/api/submit-fleet-worker`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,16 +149,19 @@ const Guards = () => {
       if (response.ok) {
         setSnackbar({
           open: true,
-          message: 'Guard form submitted successfully!',
+          message: 'Fleet worker form submitted successfully!',
           severity: 'success',
         });
         setFormData({
-          fullName: '',
-          phone: '',
+          firstName: '',
+          lastName: '',
           email: '',
+          phone: '',
           city: '',
-          license: '',
+          specialtyCategory: '',
+          specialtySubcategory: '',
           yearsOfExperience: '',
+          cdlLicense: '',
           details: '',
         });
       } else {
@@ -112,16 +185,15 @@ const Guards = () => {
 
       <div className="container-form">
         <div className="header">
-          <div className="text">Security Guards Application</div>
+          <div className="text" style={{ color: '#b35c0d' }}>Fleet Worker Application</div>
         </div>
         <div className="inputs">
           {[ 
-            { icon: AccountCircleIcon, name: 'fullName', placeholder: 'Full Name' },
+            { icon: AccountCircleIcon, name: 'firstName', placeholder: 'First Name' },
+            { icon: AccountCircleIcon, name: 'lastName', placeholder: 'Last Name' },
+            { icon: EmailIcon, name: 'email', placeholder: 'Your Email Address', type: 'email' },
             { icon: DialpadTwoToneIcon, name: 'phone', placeholder: 'Phone Number', type: 'tel' },
-            { icon: EmailIcon, name: 'email', placeholder: 'Email Address', type: 'email' },
-            { icon: LocationCityIcon, name: 'city', placeholder: 'City You Live' },
-            { icon: InfoIcon, name: 'license', placeholder: 'Security Guard License Number' },
-            { icon: InfoIcon, name: 'yearsOfExperience', placeholder: 'Years of Experience' },
+            { icon: LocationCityIcon, name: 'city', placeholder: 'Your City' },
           ].map(({ icon: Icon, name, placeholder, type = 'text' }) => (
             <div className="input" key={name}>
               <Icon style={{ margin: '0px 30px', color: '#555' }} />
@@ -136,52 +208,138 @@ const Guards = () => {
             </div>
           ))}
 
-        <div className="input-container">
+          {/* Specialty Category Dropdown */}
           <div className="input">
-            <TextField
-              label="Additional Details (please include your availability)"
-              multiline
-              rows={4}
-              variant="outlined"
-              fullWidth
-              name="details"
-              value={formData.details}
-              onChange={handleChange}
-              InputProps={{
-                style: {
-                  backgroundColor: 'transparent', // Matches `.input input`
-                  border: 'none',
-                  outline: 'none',
-                  color: '#797979', // Matches `.input input`
-                  fontSize: '19px', // Matches `.input input`
-                },
-              }}
-              InputLabelProps={{
-                style: {
-                  color: '#555', // Matches label text color in `.input`
-                },
-              }}
-            />
-            {errors.details && (
-              <p
-                className="error"
+            <LocalShippingIcon style={{ margin: '0px 30px', color: '#555' }} />
+            <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px' }}>
+              <InputLabel id="specialty-category-label" style={{ color: '#555' }}>
+                Your Fleet Specialty Category
+              </InputLabel>
+              <Select
+                labelId="specialty-category-label"
+                name="specialtyCategory"
+                value={formData.specialtyCategory}
+                onChange={handleChange}
+                label="Your Fleet Specialty Category"
                 style={{
-                  position: 'absolute',
-                  top: '-20px',
-                  right: '0',
-                  color: 'red',
-                  margin: 0,
-                  textAlign: 'right',
+                  backgroundColor: 'transparent',
+                  color: '#797979',
+                  fontSize: '19px',
                 }}
               >
-                {errors.details}
-              </p>
-            )}
+                {Object.entries(specialtyOptions).map(([key, { label }]) => (
+                  <MenuItem key={key} value={key}>
+                    {key} - {label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            {errors.specialtyCategory && <p className="error" style={{ color: 'red' }}>{errors.specialtyCategory}</p>}
           </div>
+
+          {/* Specialty Subcategory Dropdown */}
+          {formData.specialtyCategory && (
+            <div className="input">
+              <LocalShippingIcon style={{ margin: '0px 30px', color: '#555' }} />
+              <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px' }}>
+                <InputLabel id="specialty-subcategory-label" style={{ color: '#555' }}>
+                  Specific Fleet Role
+                </InputLabel>
+                <Select
+                  labelId="specialty-subcategory-label"
+                  name="specialtySubcategory"
+                  value={formData.specialtySubcategory}
+                  onChange={handleChange}
+                  label="Specific Fleet Role"
+                  style={{
+                    backgroundColor: 'transparent',
+                    color: '#797979',
+                    fontSize: '19px',
+                  }}
+                >
+                  {specialtyOptions[formData.specialtyCategory]?.subcategories.map((subcategory, index) => (
+                    <MenuItem key={index} value={subcategory}>
+                      {subcategory}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              {errors.specialtySubcategory && <p className="error" style={{ color: 'red' }}>{errors.specialtySubcategory}</p>}
+            </div>
+          )}
+
+          {/* Years of Experience */}
+          <div className="input">
+            <InfoIcon style={{ margin: '0px 30px', color: '#555' }} />
+            <input
+              type="text"
+              name="yearsOfExperience"
+              placeholder="Years of Experience"
+              value={formData.yearsOfExperience}
+              onChange={handleChange}
+            />
+            {errors.yearsOfExperience && <p className="error" style={{ color: 'red' }}>{errors.yearsOfExperience}</p>}
+          </div>
+
+          {/* CDL License */}
+          <div className="input">
+            <InfoIcon style={{ margin: '0px 30px', color: '#555' }} />
+            <input
+              type="text"
+              name="cdlLicense"
+              placeholder="CDL License Type (if applicable)"
+              value={formData.cdlLicense}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="input-container">
+            <div className="input">
+              <TextField
+                label="Additional Details (please include your availability)"
+                multiline
+                rows={4}
+                variant="outlined"
+                fullWidth
+                name="details"
+                value={formData.details}
+                onChange={handleChange}
+                InputProps={{
+                  style: {
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    outline: 'none',
+                    color: '#797979',
+                    fontSize: '19px',
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: '#555',
+                  },
+                }}
+              />
+              {errors.details && (
+                <p
+                  className="error"
+                  style={{
+                    position: 'absolute',
+                    top: '-20px',
+                    right: '0',
+                    color: 'red',
+                    margin: 0,
+                    textAlign: 'right',
+                  }}
+                >
+                  {errors.details}
+                </p>
+              )}
+            </div>
           </div>
         </div>
+        
         <div className="submit-container">
-          <button className="submit" onClick={handleSubmit}>
+          <button className="submit" onClick={handleSubmit} style={{ backgroundColor: '#b35c0d' }}>
             Submit
             {loading && <CircularProgress size={20} style={{ marginLeft: '10px', color: '#fff' }} />}
           </button>
@@ -205,4 +363,4 @@ const Guards = () => {
   );
 };
 
-export default Guards;
+export default FleetWorkersForm;

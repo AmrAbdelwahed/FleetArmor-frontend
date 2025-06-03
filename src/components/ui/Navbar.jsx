@@ -5,14 +5,13 @@ import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import HelpIcon from '@mui/icons-material/Help';
-import MapIcon from '@mui/icons-material/Map';
-import SecurityIcon from '@mui/icons-material/Security';
+
 import StarsIcon from '@mui/icons-material/Stars';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import logo from '../../assets/guardarmor.png';
-import mapleLeaf from '../../assets/leaf.png';
-import newLogo from '../../assets/new-logo.png';
+
+import logo from '../../assets/fleetarmor-text.png';
+import newLogo from '../../assets/FleetArmor.png';
 
 import "@/assets/navbar.css";
 
@@ -24,7 +23,6 @@ const Navbar = () => {
   const menuOptions = [
     { text: "Home", icon: <HomeIcon />, href: "/home" },
     { text: "How It Works", icon: <HelpIcon />, href: "#how-it-works" },
-    { text: "Where We Are", icon: <MapIcon />, href: "#where-we-are" },
     { text: "Benefits", icon: <StarsIcon />, href: "#benefits" },
     { text: "Hiring", icon: <BusinessCenterIcon />, href: "#streamline-hiring" },
     { text: "Pricing", icon: <AttachMoneyIcon />, href: "#pricing" },
@@ -59,18 +57,21 @@ const Navbar = () => {
             src={newLogo} 
             alt="Company Logo" 
             style={{ 
-              height: '70px', 
+              height: '90px', 
               width: 'auto', 
-              marginRight: '5px',
-              borderRadius: '4px' 
+              borderRadius: '2px',
+              marginLeft: '-12px'  // Adjust this value to get the spacing you want
             }} 
           />
-          <img src={logo} alt="GuardArmor Logo" style={{ height: 'auto' }} />
-          <img 
-            src={mapleLeaf} 
-            alt="Canadian Maple Leaf" 
-            style={{ width: '35px', height: 'auto', marginLeft: '5px' }}
-          />              
+
+          <img src={logo} alt="Construction Armor Logo" style={{ 
+            width: '900px', 
+            height: 'auto',
+            transform: 'scaleX(1.34) scaleY(1.3)',
+            transformOrigin: 'left center',
+            marginLeft: '-60px'  // Adjust this value to get the spacing you want
+          }} />
+             
         </div>
       </div>
       <div className="navbar-links-container">
@@ -99,7 +100,7 @@ const Navbar = () => {
           sx={{
             width: 250,
             height: '100vh',
-            backgroundColor: 'rgb(42, 105, 239)',
+            backgroundColor: '#b35c0d',
             color: 'white',
             paddingTop: '10px',
             paddingBottom: '10px',
