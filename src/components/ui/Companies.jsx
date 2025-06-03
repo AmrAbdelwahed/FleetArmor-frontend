@@ -153,8 +153,8 @@ const Companies = () => {
           {/* Major Area Dropdown */}
           <div className="input">
             <BuildIcon style={{ margin: '0px 30px', color: '#555' }} />
-            <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px' }}>
-              <InputLabel id="major-area-label" style={{ color: '#555' }}>
+            <FormControl fullWidth variant="outlined" style={{ marginLeft: '-5px' }}>
+              <InputLabel id="major-area-label"  style={{ color: '#555', fontSize: '17px', marginLeft: '-7px' }}>
                 The major area you looking for?
               </InputLabel>
               <Select
@@ -167,6 +167,7 @@ const Companies = () => {
                   backgroundColor: 'transparent',
                   color: '#797979',
                   fontSize: '19px',
+                  marginLeft: '-5px',
                 }}
               >
                 {majorAreas.map((area, index) => (

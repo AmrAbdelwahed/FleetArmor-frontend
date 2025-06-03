@@ -211,8 +211,8 @@ const FleetWorkersForm = () => {
           {/* Specialty Category Dropdown */}
           <div className="input">
             <LocalShippingIcon style={{ margin: '0px 30px', color: '#555' }} />
-            <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px' }}>
-              <InputLabel id="specialty-category-label" style={{ color: '#555' }}>
+            <FormControl fullWidth variant="outlined" style={{ marginLeft: '-5px' }}>
+              <InputLabel id="specialty-category-label"  style={{ color: '#555', fontSize: '17px', marginLeft: '-7px' }}>
                 Your Fleet Specialty Category
               </InputLabel>
               <Select
@@ -225,6 +225,7 @@ const FleetWorkersForm = () => {
                   backgroundColor: 'transparent',
                   color: '#797979',
                   fontSize: '19px',
+                  marginLeft: '-5px',
                 }}
               >
                 {Object.entries(specialtyOptions).map(([key, { label }]) => (
@@ -241,8 +242,8 @@ const FleetWorkersForm = () => {
           {formData.specialtyCategory && (
             <div className="input">
               <LocalShippingIcon style={{ margin: '0px 30px', color: '#555' }} />
-              <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px' }}>
-                <InputLabel id="specialty-subcategory-label" style={{ color: '#555' }}>
+              <FormControl fullWidth variant="outlined" style={{ marginLeft: '-5px' }}>
+                <InputLabel id="specialty-subcategory-label" style={{ color: '#555', fontSize: '18px', marginLeft: '-7px' }}>
                   Specific Fleet Role
                 </InputLabel>
                 <Select
@@ -255,6 +256,7 @@ const FleetWorkersForm = () => {
                     backgroundColor: 'transparent',
                     color: '#797979',
                     fontSize: '19px',
+                    marginLeft: '-5px',
                   }}
                 >
                   {specialtyOptions[formData.specialtyCategory]?.subcategories.map((subcategory, index) => (
