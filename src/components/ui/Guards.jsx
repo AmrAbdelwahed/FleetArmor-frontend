@@ -287,7 +287,7 @@ const FleetWorkersForm = () => {
             <input
               type="text"
               name="cdlLicense"
-              placeholder="CDL License Type (if applicable)"
+              placeholder="Type of License (if applicable)"
               value={formData.cdlLicense}
               onChange={handleChange}
             />
@@ -296,7 +296,7 @@ const FleetWorkersForm = () => {
           <div className="input-container">
             <div className="input">
               <TextField
-                label="Additional Details (please include your availability)"
+                label="Additional Details"
                 multiline
                 rows={4}
                 variant="outlined"

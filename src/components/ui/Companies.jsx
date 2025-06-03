@@ -14,13 +14,11 @@ import GuardTypes from './WorkerTypes';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 const majorAreas = [
-  'A - Street Construction & Site Work Jobs',
-  'B - Paving & Road Work Jobs',
-  'C - Warehouse & General Labor Roles',
-  'D - Machine Operators (Industrial)',
-  'E - Skilled Trades',
-  'F - Welding Jobs',
-  'G - Construction Trades'
+  'A - Management & Operations',
+  'B - Technical & Maintenance Jobs',
+  'C - Snow & Wind Services',
+  'D - Fleet Vehicle Operator Roles',
+  'E - Fleet Drivers & Other Support Jobs',
 ];
 
 const Companies = () => {

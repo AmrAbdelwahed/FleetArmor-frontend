@@ -26,6 +26,7 @@ import mikhaiellogistics from '@/assets/mikhaiellogistics.jpeg';
 import myyellow from '@/assets/myyellow.jpg';
 import suretrack from '@/assets/suretrack.jpg';
 import rafat from '@/assets/Rafat.jpg';
+import emcon from '@/assets/Emcon.webp';
 
 import BannerBackground from "@/assets/img1.jpg";
 import Navbar from './Navbar';
@@ -43,7 +44,7 @@ const Home = () => {
       >
         <div className="px-4 py-12 md:px-8">
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-8">
-            Find Security Guards the Easy Way.
+            Find Fleet Workers the Easy Way.
           </h1>
          
           <div className="flex flex-wrap justify-center sm:justify-start sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-20 mb-4">
@@ -106,6 +107,7 @@ const Home = () => {
             // { src: myyellow, alt: "My Yellow" },
             // { src: suretrack, alt: "Suretrack" },
             { src: rafat, alt: "Rafat" },
+            { src: emcon, alt: "Emcon" },
           ]}
         />
       </div>
