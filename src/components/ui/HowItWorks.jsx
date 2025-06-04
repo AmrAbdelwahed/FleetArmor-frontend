@@ -7,31 +7,31 @@ const HowItWorks = () => {
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">
-            Construction Industry Experts.
+            Construction Fleet Industry Experts.
           </h1>
           <h2 className="text-3xl font-bold mb-6" style={{ color: '#b35c0d' }}>
             We're Here to Help Build Teams.
           </h2>
           <p className="text-xl text-gray-700 mb-6">
-            As a leading construction recruitment agency, we understand the critical elements of successful construction projects – skilled workforce, precision, and timeliness. We offer an extensive range of services tailored to the unique needs of the construction sector. From sourcing skilled labor to senior project managers, we ensure that every placement complements your project goals and timelines.
+            As a leading construction recruitment agency, we understand the critical elements of successful construction fleet projects – skilled workforce, precision, and timeliness. We offer an extensive range of services tailored to the unique needs of the construction sector. From sourcing skilled labor to senior project managers, we ensure that every placement complements your project goals and timelines.
           </p>
           <div className="mb-6">
             <h3 className="text-2xl font-bold mb-3" style={{ color: '#b35c0d' }}>Request Talent</h3>
             <p className="text-lg text-gray-700 mb-4">
-              Whether it's a residential, commercial, or infrastructure project, trust Construction Armor Staffing to deliver candidates with the right experience and expertise.
+              Whether it's a residential, commercial, or infrastructure project, trust Fleet Armor Staffing to deliver candidates with the right experience and expertise.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             <div>
               <h4 className="text-lg font-bold mb-2" style={{ color: '#b35c0d' }}>For job seekers:</h4>
               <p className="text-gray-700">
-                We will ensure that you land a job with a safe and reputable construction company.
+                We will ensure that you land a job with a safe and reputable construction fleet company.
               </p>
             </div>
             <div>
               <h4 className="text-lg font-bold mb-2" style={{ color: '#b35c0d' }}>Equality for all parties:</h4>
               <p className="text-gray-700">
-                Construction companies and construction workers trust Construction Armor Staffing to equally serve the interests of both parties.
+                Fleet companies and fleet workers trust Fleet Armor Staffing to equally serve the interests of both parties.
               </p>
             </div>
           </div>
@@ -45,7 +45,7 @@ const HowItWorks = () => {
             <div>
               <h5 className="text-xl font-bold mb-2">Finding Workers,<br />Simplified</h5>
               <p className="text-gray-600">
-                Our staffing solutions help construction companies maintain project timelines and quality 
+                Our staffing solutions help fleet companies maintain project timelines and quality 
                 with convenient and reliable worker staffing services. If you need construction workers, 
                 simply create your free account, then tell us what kind of worker you are looking for.
               </p>
@@ -59,8 +59,8 @@ const HowItWorks = () => {
             <div>
               <h5 className="text-xl font-bold mb-2">Find Workers<br />Quickly</h5>
               <p className="text-gray-600">
-                Construction Armor instantly identifies pre-vetted construction workers that match your criteria 
-                for skills and experience from our database. The search for your next construction worker 
+                Fleet Armor instantly identifies pre-vetted fleet workers that match your criteria 
+                for skills and experience from our database. The search for your next fleet worker 
                 has never been easier.
               </p>
             </div>
@@ -102,7 +102,7 @@ const HowItWorks = () => {
             target="_blank"
             className="inline-block px-8 py-4 text-xl font-bold text-white bg-[#b35c0d] rounded-lg text-center hover:text-white hover:bg-[#8f4c0d] transition-colors duration-300 w-full sm:w-80 sm:mx-2"
           >
-            Construction Companies Start Here
+            Fleet Companies Start Here
           </a>
           
           {/* Construction Workers Start Here Button */}
@@ -111,7 +111,7 @@ const HowItWorks = () => {
             target="_blank"
             className="inline-block px-8 py-4 text-xl font-bold text-white bg-[#b35c0d] rounded-lg text-center hover:text-white hover:bg-[#8f4c0d] transition-colors duration-300 w-full sm:w-80 sm:mx-2"
           >
-            Construction Workers Start Here
+            Fleet Workers Start Here
           </a>
         </div>
 

@@ -16,7 +16,7 @@ const Benefits = () => {
             <div className="relative">
               <div className="relative bg-white p-10 rounded-3xl shadow-xl">
                 <div className="absolute -top-8 left-10 bg-gradient-to-r from-[#b35c0d] to-[#8f4c0d] text-white px-6 py-3 rounded-full font-semibold">
-                  For Construction Companies
+                  For Fleet Companies
                 </div>
                 
                 <div className="space-y-8 mt-6">
@@ -25,13 +25,13 @@ const Benefits = () => {
                       Recruitment Solutions We Provide
                     </h3>
                     <p className="text-lg text-gray-600 border-b border-gray-100 pb-6">
-                      Labour shortages are a frequent issue in construction. These shortages can result in significant project delays and financial losses. Furthermore, to compensate for the lack of workers, many construction workers work longer hours, creating safety concerns. This is particularly true for large construction projects like plazas, condos, or other large-scale buildings that rely on committed staff to see the project through to completion.
+                      Labour shortages are a frequent issue in construction fleet. These shortages can result in significant project delays and financial losses. Furthermore, to compensate for the lack of workers, many fleet workers work longer hours, creating safety concerns. This is particularly true for large construction fleet projects like plazas, condos, or other large-scale buildings that rely on committed staff to see the project through to completion.
                     </p>
                   </div>
                   
                   <div className="group">
                     <p className="text-gray-600 leading-relaxed">
-                      Construction Armor Staffing is here to help you find skilled contractors for your project. We'll match you with reliable, qualified, and licensed construction workers. If you are satisfied with the workers we provide, you can keep them on board for the duration of the project. Get qualified construction workers verified by an employment agency with a track record of success.
+                      Fleet Armor Staffing is here to help you find skilled contractors for your project. We'll match you with reliable, qualified, and licensed construction fleet workers. If you are satisfied with the workers we provide, you can keep them on board for the duration of the project. Get qualified construction fleet workers verified by an employment agency with a track record of success.
                     </p>
                   </div>
                 </div>
@@ -42,7 +42,7 @@ const Benefits = () => {
             <div className="relative">
               <div className="relative bg-white p-10 rounded-3xl shadow-xl">
                 <div className="absolute -top-8 left-10 bg-gradient-to-r from-[#b35c0d] to-[#8f4c0d] text-white px-6 py-3 rounded-full font-semibold">
-                  For Construction Workers
+                  For Fleet Workers
                 </div>
                 
                 <div className="space-y-8 mt-6">
@@ -51,7 +51,7 @@ const Benefits = () => {
                       Are You a Job Seeker?
                     </h3>
                     <p className="text-lg text-gray-600 border-b border-gray-100 pb-6">
-                      We're here to help you find a reputable construction company that matches your skillset. If you meet the basic skills requirement but need additional training for a specific task, we can help you with that. This will give you the necessary confidence to meet the job requirements needed on-site.
+                      We're here to help you find a reputable fleet company that matches your skillset. If you meet the basic skills requirement but need additional training for a specific task, we can help you with that. This will give you the necessary confidence to meet the job requirements needed on-site.
                     </p>
                   </div>
                   
