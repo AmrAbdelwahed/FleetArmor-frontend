@@ -14,7 +14,7 @@ import image2 from '@/assets/img2.webp';
 import image3 from '@/assets/img3.jpg';
 import image4 from '@/assets/img4.jpg';
 import image5 from '@/assets/img5.jpg';
-import image6 from '@/assets/img6.jpeg';
+import image6 from '@/assets/img6.webp';
 import image7 from '@/assets/img7.jpg';
 import image8 from '@/assets/img8.jpg';
 
@@ -79,7 +79,7 @@ const Home = () => {
       </div>
 
       {/* Three Images Component */}
-      <ThreeImages image1={image5} image2={image6} />
+      <ThreeImages image1={image5} image2={image6} image3={image7} />
 
 
       <div id="streamline-hiring">
