@@ -6,11 +6,11 @@
       }
     ],
     "env": {
-      "VITE_API_URL": "https://nodemail-backendservice.onrender.com"
+      "VITE_API_URL": "https://fleetarmor-backend.onrender.com"
     },
     "build": {
       "env": {
-        "VITE_API_URL": "https://nodemail-backendservice.onrender.com"
+        "VITE_API_URL": "https://fleetarmor-backend.onrender.com"
       }
     }
   }
