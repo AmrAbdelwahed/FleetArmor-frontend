@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '@/assets/LoginSignup.css';
 import '@/assets/navbar.css';
-import { TextField, Snackbar, Alert, CircularProgress, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { TextField, Snackbar, Alert, CircularProgress, Select, MenuItem, FormControl, InputLabel, Chip, Box } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import DialpadTwoToneIcon from '@mui/icons-material/DialpadTwoTone';
@@ -56,9 +56,30 @@ const specialtyOptions = {
     ]
   },
   'E': {
-    label: 'Fleet Drivers & Other Support Jobs',
+    label: 'Fleet Drivers',
     subcategories: [
       'Lowboy Truck Driver',
+      'Dump Truck',
+      'Snow Plow Truck',
+      'Roll-Off Truck',
+      'Tri-Axle Dump Truck',
+      'Lowboy Truck',
+      'Sweeper Truck',
+      'Haul Truck',
+      'Dangerous goods Truck',
+      'Concrete Mixer Truck',
+      'Volumetric Concrete Truck',
+      'Tractor-Trailer Truck',
+      'Flatbed Truck',
+      'Crane Truck',
+      'Water Truck',
+      'Tanker Truck',
+      'Fuel Truck'
+    ]
+  },
+  'F': {
+    label: 'Other Support Jobs',
+    subcategories: [
       'Loader Operator (Fleet Yard)',
       'GPS/Telematics Technician'
     ]
@@ -73,7 +94,7 @@ const FleetWorkersForm = () => {
     phone: '',
     city: '',
     specialtyCategory: '',
-    specialtySubcategory: '',
+    specialtySubcategory: [],
     yearsOfExperience: '',
     cdlLicense: '',
     details: '',
@@ -98,7 +119,7 @@ const FleetWorkersForm = () => {
     if (!phoneRegex.test(formData.phone)) newErrors.phone = 'Invalid phone format';
     if (!formData.city.trim()) newErrors.city = 'City is required';
     if (!formData.specialtyCategory) newErrors.specialtyCategory = 'Specialty category is required';
-    if (!formData.specialtySubcategory) newErrors.specialtySubcategory = 'Specialty subcategory is required';
+    if (!formData.specialtySubcategory.length) newErrors.specialtySubcategory = 'At least one specialty subcategory is required';
     if (!formData.yearsOfExperience.trim()) newErrors.yearsOfExperience = 'Years of experience is required';
 
     setErrors(newErrors);
@@ -113,7 +134,7 @@ const FleetWorkersForm = () => {
       setFormData((prev) => ({
         ...prev,
         [name]: value,
-        specialtySubcategory: '',
+        specialtySubcategory: [],
       }));
     } else {
       setFormData((prev) => ({
@@ -126,6 +147,21 @@ const FleetWorkersForm = () => {
       setErrors((prev) => ({
         ...prev,
         [name]: '',
+      }));
+    }
+  };
+
+  const handleMultiSelectChange = (event) => {
+    const { value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      specialtySubcategory: typeof value === 'string' ? value.split(',') : value,
+    }));
+    
+    if (errors.specialtySubcategory) {
+      setErrors((prev) => ({
+        ...prev,
+        specialtySubcategory: '',
       }));
     }
   };
@@ -159,7 +195,7 @@ const FleetWorkersForm = () => {
           phone: '',
           city: '',
           specialtyCategory: '',
-          specialtySubcategory: '',
+          specialtySubcategory: [],
           yearsOfExperience: '',
           cdlLicense: '',
           details: '',
@@ -238,26 +274,34 @@ const FleetWorkersForm = () => {
             {errors.specialtyCategory && <p className="error" style={{ color: 'red' }}>{errors.specialtyCategory}</p>}
           </div>
 
-          {/* Specialty Subcategory Dropdown */}
+          {/* Specialty Subcategory Multi-Select Dropdown */}
           {formData.specialtyCategory && (
             <div className="input">
               <LocalShippingIcon style={{ margin: '0px 30px', color: '#555' }} />
               <FormControl fullWidth variant="outlined" style={{ marginLeft: '-5px' }}>
                 <InputLabel id="specialty-subcategory-label" style={{ color: '#555', fontSize: '18px', marginLeft: '-7px' }}>
-                  Specific Fleet Role
+                  Specific Fleet Roles (multi-select)
                 </InputLabel>
                 <Select
                   labelId="specialty-subcategory-label"
                   name="specialtySubcategory"
+                  multiple
                   value={formData.specialtySubcategory}
-                  onChange={handleChange}
-                  label="Specific Fleet Role"
+                  onChange={handleMultiSelectChange}
+                  label="Specific Fleet Roles (multi-Select)"
                   style={{
                     backgroundColor: 'transparent',
                     color: '#797979',
                     fontSize: '19px',
                     marginLeft: '-5px',
                   }}
+                  renderValue={(selected) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                      {selected.map((value) => (
+                        <Chip key={value} label={value} size="small" />
+                      ))}
+                    </Box>
+                  )}
                 >
                   {specialtyOptions[formData.specialtyCategory]?.subcategories.map((subcategory, index) => (
                     <MenuItem key={index} value={subcategory}>
