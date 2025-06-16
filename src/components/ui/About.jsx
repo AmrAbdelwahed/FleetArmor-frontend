@@ -60,7 +60,7 @@ const About = () => {
         <div className="text-center">
           {/* Contact Us Button */}
           <a 
-            href="mailto:info@fleetarmor.ca?subject=More%20information%20about%20Fleet%20Armor%20please"
+            href="mailto:contact@fleetarmor.ca?subject=More%20information%20about%20Fleet%20Armor%20please"
             className="inline-block px-8 py-3 bg-[#b35c0d] text-white font-bold rounded-lg hover:text-white hover:bg-[#8f4c0d] transition-colors">
             Contact Us
           </a>
